@@ -8,6 +8,9 @@
     "test": "set NODE_ENV=test&&mocha --timeout 15000 --colors --exit test/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
+  "engines": {
+    "node": "10.0.0"
+  },
   "author": "Bojan Todorovic",
   "license": "ISC",
   "dependencies": {
