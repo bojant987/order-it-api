@@ -39,8 +39,8 @@ app.post('/users', (req, res) => {
         '">link</a></p>',
     });
 
-    return Promise.all([save, mail]).then(() => {
-        console.log('qweqwe');
+    return Promise.all([save, mail]).then(([user, mailResp]) => {
+        console.log(mailResp);
         res.sendStatus(200);
     }).catch(e => {
         let error;
