@@ -40,10 +40,11 @@ app.post('/users', (req, res) => {
     });
 
     return Promise.all([save, mail]).then(() => {
+        console.log('qweqwe');
         res.sendStatus(200);
     }).catch(e => {
         let error;
-
+        console.log(e)
         if (e.responseCode === 535) {
             error = {
                 developerMessage: e.message,

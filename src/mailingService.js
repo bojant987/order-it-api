@@ -1,11 +1,23 @@
 const nodemailer = require('nodemailer');
 
 const mailingService = ({to, subject, text, html, res}) => {
+    // let transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: 'bojant987@gmail.com',
+    //         pass: 'parlament',
+    //     },
+    //     tls: {
+    //         rejectUnauthorized: false
+    //     }
+    // });
+
     let transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp25.elasticemail.com',
+        port: 25,
         auth: {
-            user: 'bojant987@gmail.com',
-            pass: 'parlament',
+            user: 'bojant987@hotmail.com',
+            pass: '9e3126cc-b67f-43f7-a6a5-668ddca6108d',
         },
         tls: {
             rejectUnauthorized: false
