@@ -162,7 +162,6 @@ app.post('/users/login', (req, res) => {
             res.status(200).send({token});
         });
     }).catch((e) => {
-        console.log(e)
         sendError(res, {
             status: 401,
             message: 'Wrong username and/or password',
