@@ -39,12 +39,11 @@ app.post('/users', (req, res) => {
         '">link</a></p>',
     });
 
-    return Promise.all([save, mail]).then(([user, mailResp]) => {
-        console.log(mailResp);
+    return Promise.all([save, mail]).then(() => {
         res.sendStatus(200);
     }).catch(e => {
         let error;
-        console.log(e)
+
         if (e.responseCode === 535) {
             error = {
                 developerMessage: e.message,
@@ -163,6 +162,7 @@ app.post('/users/login', (req, res) => {
             res.status(200).send({token});
         });
     }).catch((e) => {
+        console.log(e)
         sendError(res, {
             status: 401,
             message: 'Wrong username and/or password',
