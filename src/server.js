@@ -39,11 +39,7 @@ app.post('/users', (req, res) => {
         '">link</a></p>',
     });
 
-    return Promise.all([save, mail]).then(([user]) => {
-        if (!user) {
-            throw new Error();
-        }
-
+    return Promise.all([save, mail]).then(() => {
         res.sendStatus(200);
     }).catch(e => {
         let error;
