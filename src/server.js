@@ -39,7 +39,11 @@ app.post('/users', (req, res) => {
         '">link</a></p>',
     });
 
-    return Promise.all([save, mail]).then(() => {
+    return Promise.all([save, mail]).then(([user]) => {
+        if (!user) {
+            throw new Error();
+        }
+
         res.sendStatus(200);
     }).catch(e => {
         let error;
@@ -52,8 +56,9 @@ app.post('/users', (req, res) => {
             };
         } else {
             error = {
-                status: 400,
-                message: e.errmsg,
+                status: 500,
+                developerMessage: e.errmsg,
+                message: 'Internal server error',
             }
         }
 
